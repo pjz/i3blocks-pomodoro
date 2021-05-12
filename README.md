@@ -10,3 +10,8 @@ interval=1
 A left mouse click on the app block on i3bar toggles pause.
 
 A right mouse click resets the timer.
+
+From the cli:
+  * `/path/to/pomodoro toggle` toggles pause
+  * `/path/to/pomodoro reset` toggles resets the timer
+

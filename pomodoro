@@ -27,6 +27,7 @@ Simple Pomodoro app inspired by spt project.
 The app designed to be used with i3blocks.
 """
 
+import sys
 import errno
 import os
 import socket
@@ -192,10 +193,13 @@ if __name__ == "__main__":
     try:
         app.run()
     except AlredyStartedError:
-        button = os.getenv("BLOCK_BUTTON", "").lower()
-        if button == "1":
-            app.toggle()
-        elif button == "3":
-            app.reset()
-        else:
-            app.display()
+        pass
+
+    cmd = dict(enumerate(sys.argv)).get(1)
+    button = os.getenv("BLOCK_BUTTON", "").lower()
+    if button == "1" or cmd == 'toggle':
+        app.toggle()
+    elif button == "3" or cmd == 'reset':
+        app.reset()
+    else:
+        app.display()
